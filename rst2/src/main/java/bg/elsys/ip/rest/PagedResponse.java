@@ -5,22 +5,22 @@ import java.util.List;
 
 public class PagedResponse {
 	
-	private List<User> data = new ArrayList<>();
+	private List<Cars> data = new ArrayList<>();
 	
 	private int page;
 	private int totalPages;
 	
 	
-	public PagedResponse(List<User> data, int page, int totalPages) {
+	public PagedResponse(List<Cars> data, int page, int totalPages) {
 		this.data = data;
 		this.page = page;
 		this.totalPages = totalPages;
 	}
 	
-	public List<User> getData() {
+	public List<Cars> getData() {
 		return data;
 	}
-	public void setData(List<User> data) {
+	public void setData(List<Cars> data) {
 		this.data = data;
 	}
 	public int getPage() {

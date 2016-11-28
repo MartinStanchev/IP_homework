@@ -25,6 +25,7 @@ buildscript {
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
+
 	compile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.5'
 	
     compile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
