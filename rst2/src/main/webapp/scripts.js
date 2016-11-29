@@ -1,5 +1,5 @@
-function get_cars_table() { //reference http://stackoverflow.com/questions/28816995/displaying-json-object-array-in-html-as-response-from-jersey
-	$.getJSON('http://localhost:8080/rst2/api/cars?page=0&perPage=10', function(data) {
+function get_cars_table(page_num) { //help from http://stackoverflow.com/questions/28816995/displaying-json-object-array-in-html-as-response-from-jersey
+	$.getJSON('http://localhost:8080/rst2/api/cars?page=' + page_num + '&perPage=4', function(data) {
 		$.each(data, function(k, arr) {
 			for(i = 0; i < arr.length; i++) {
 				createElementsInTable(arr[i]);				
@@ -33,13 +33,30 @@ function addCar() {
 			data: toJSON(),
 			success: function(result) {
 				createElementsInTable(result);
+				window.location.href = "http://localhost:8080/rst2/";
 			}
 		});
 	});
 }
 
+function pager(j) {
+	$('#nextPage').on("click", function() {
+		j += 1;
+		$('#cars tbody tr').remove();
+		get_cars_table(j);	
+	});
+	$('#prevPage').on("click", function() {
+		j -= 1;
+		$('#cars tbody tr').remove();
+		get_cars_table(j);	
+	});
+	get_cars_table(j);
+}
+
 $(document).ready(function() {
-	get_cars_table();
+	var j = 0;
+	//get_cars_table(0);
+	pager(j);
 	addCar();
 	
 });
